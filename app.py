@@ -121,3 +121,4 @@ try:
         counter += 1
 except:
     st.error("An error occurred. Please try again later.")
+st.write("Developed by Shantanu Thorat, Texas A&M Class of 2024.")
