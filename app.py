@@ -106,19 +106,26 @@ try:
     
         columns.sort(key=lambda value: int(value.split("_")[-1]))
         total_students = 0
+        color_map = dict()
         for column in columns:
             weight = int(column.split("_")[-1])
             for choice in choices:
                 if choices[choice][VALUE] == weight:
-                    graph_data.append({CHOICE: f"{choice} (score of {weight})", STUDENTS:aefis_question_frame[column].sum()})
+                    row = {CHOICE: f"{choice} (score of {weight})", STUDENTS:aefis_question_frame[column].sum()}
+                    graph_data.append((weight,row))
+                    color_map[row[CHOICE]] = choices[choice][COLOR]
                     total_students += aefis_question_frame[column].sum()
-        if total_students != 0:      
-            graph_data_frame = pd.DataFrame(graph_data)
-            fig = px.pie(graph_data_frame,values=STUDENTS,names=CHOICE)
+       
+
+        if total_students != 0: 
+            graph_data.sort(key=lambda pair: pair[0])
+            graph_data_frame = pd.DataFrame([pair[1] for pair in graph_data])
+            fig = px.pie(graph_data_frame,values=STUDENTS,names=CHOICE, color=CHOICE, color_discrete_map=color_map)
+            fig.update_traces(sort=False)
             aefis_cols[col_index].plotly_chart(fig,theme=None)
         else:
             aefis_cols[col_index].write("No data available.")
         counter += 1
-except:
+except Exception as e:
     st.error("An error occurred. Please try again later.")
 st.write("Developed by Shantanu Thorat, Texas A&M Class of 2024.")

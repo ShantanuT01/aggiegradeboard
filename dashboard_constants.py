@@ -31,52 +31,72 @@ STUDENTS = "students"
 CHOICE = "choices"
 QUESTION = "question"
 
+# color related
+COLOR = "color"
+CYAN = '#19D3F3'
+RED = '#EF553B'
+ORANGE = '#FFA15A'
+PURPLE = '#AB63FA'
+BLUE = '#636EFA'
+GREEN = '#00CC96'
+
 # copied directly from the JSON source data
 AEFIS_CHOICE_MAPPINGS = {
       "Based on what the instructor(s) communicated, and the information provided in the course syllabus, I understood what was expected of me.": {
                 "No, I did not understand what was expected of me.": {
                     VALUE: 1,
+                    COLOR: RED,
                 },
                 "I partially understood what was expected of me.": {
                     VALUE: 2,
+                    COLOR: BLUE,
                 },
                 "Yes, I understood what was expected of me.": {
                     VALUE: 3,
+                    COLOR: GREEN,
                 },
             },
             "This course helped me learn concepts or skills as stated in course objectives/outcomes.": {
                 "This course did not help me learn the concepts or skills.": {
                     VALUE: 1,
+                    COLOR: RED,
                    
                 },
                 "This course only slightly helped me learn the concepts or skills.": {
                     VALUE: 2,
+                    COLOR: ORANGE,
                     
                 },
                 "This course moderately helped me learn the concepts or skills.": {
                     VALUE: 3,
+                    COLOR: BLUE,
                     
                 },
                 "This course definitely helped me learn the concepts or skills.": {
                     VALUE: 4,
+                    COLOR: GREEN,
                     
                 }
             },
             "In this course, I engaged in critical thinking and/or problem solving.": {
                 "Never": {
                     VALUE: 1,
+                    COLOR: RED,
                     
                 },
                 "Seldom": {
                     VALUE: 2,
+                    COLOR: ORANGE,
                    
                 },
                 "Often": {
                     VALUE: 3,
+                    COLOR: BLUE,
                     
                 },
                 "Frequently": {
                     VALUE: 4,
+                    COLOR: GREEN
                    
                 },
                
@@ -84,71 +104,87 @@ AEFIS_CHOICE_MAPPINGS = {
             "Please rate the organization of this course.": {
                 "Not at all organized": {
                     VALUE: 1,
+                    COLOR: RED,
                    
                 },
                 "Slightly organized": {
                     VALUE: 2,
+                    COLOR: ORANGE
                     
                 },
                 "Moderately organized": {
                     VALUE: 3,
-                    "count": 0
+                    COLOR: BLUE,
                 },
                 "Very well organized": {
                     VALUE: 4,
+                    COLOR: GREEN
                     
                 }
             },
             "In this course, I learned to critically evaluate diverse ideas and perspectives.": {
                 "Not Applicable": {
                     VALUE: 0,
+                    COLOR: CYAN
                 },
                 "Strongly agree": {
                     VALUE: 5,
+                    COLOR: GREEN,
                 },
                 "Agree": {
                     VALUE: 4,
+                    COLOR: BLUE
                     
                 },
                 "Neither agree nor disagree": {
                     VALUE: 3,
+                    COLOR: PURPLE
                    
                 },
                 "Disagree": {
                     VALUE: 2,
+                    COLOR: ORANGE, 
                 },
                 "Strongly disagree": {
                     VALUE: 1,
+                    COLOR: RED
                 }
             },
             "Feedback in this course helped me learn. Please note, feedback can be either informal (e.g., in class discussion, chat boards, think-pair-share, office hour discussions, help sessions) or formal (e.g., written or clinical assessments, review of exams, peer reviews, clicker questions).": {
                 "No feedback was provided.": {
                     VALUE: 1,
+                    COLOR: RED
                    
                 },
                 "Feedback provided was not at all helpful.": {
                     VALUE: 2,
+                    COLOR: ORANGE
                  
                 },
                 "Feedback provided was only slightly helpful.": {
                     VALUE: 3,
+                    COLOR: PURPLE
                    
                 },
                 "Feedback provided was moderately helpful.": {
                     VALUE: 4,
+                    COLOR: CYAN
                   
                 },
                 "Feedback provided was very helpful.": {
                     VALUE: 5,
+                    COLOR: BLUE,
                     
                 },
                 "Feedback provided was extremely helpful.": {
                     VALUE: 6,
+                    COLOR: GREEN
                  
                 },
                
             }
 }
+
 
 
 # helper functions
