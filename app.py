@@ -15,9 +15,6 @@ try:
 
     professor_course_terms = pd.read_csv("professor_course_terms.csv")
     professor_courses = pd.read_csv("professor_courses.csv")
-    aefis_comments = pd.read_csv("aefis_comments_with_professors.csv")
-    aefis_comments[COURSE_NUMBER] = aefis_comments[COURSE_NUMBER].astype(str)
-
 
     # configuration
     st.set_page_config(page_title='Aggie Grade Board',layout='wide')
@@ -55,25 +52,6 @@ try:
     selected_course_terms[TERM] = selected_course_terms[SEMESTER] + " " + selected_course_terms[YEAR].astype(str)
     display_course_terms = display_course_terms.drop(labels=[SEMESTER_CODE],axis=1)
     st.dataframe(display_course_terms.style.apply(highlight_everyother).format(precision=3), column_config={YEAR:st.column_config.NumberColumn(format="%d")}, hide_index=True)
-
-    # AEFIS results
-
-    st.markdown(f"### AEFIS Comments for {selected_course} by Question")
-    st.write("Double click on a comment to expand it.")
-
-    selected_question = st.selectbox(label=QUESTION,options=AEFIS_QUESTIONS)
-
-    # show AEFIS comments for only question across all semesters
-    question_frame = query_frame({PROF_NAME: selected_professor, SUBJECT_CODE:subject_code, COURSE_NUMBER: str(course_number),QUESTION: selected_question}, aefis_comments)
-    if len(question_frame) > 0:
-        question_frame = question_frame.sort_values(SEMESTER_CODE)
-        question_frame[TERM] = question_frame[SEMESTER] + " " + question_frame[YEAR].astype(str)
-        terms = question_frame[TERM].unique()
-        for term in terms:
-            st.write(f"#### {term}")
-            st.dataframe(question_frame[question_frame[TERM] == term][[COMMENT]].dropna(), hide_index=True,use_container_width=True)
-    else:
-        st.write("No comments available for selected question.")
 
     st.markdown(f"### AEFIS Statistics for {selected_course}")
 
@@ -127,5 +105,6 @@ try:
             aefis_cols[col_index].write("No data available.")
         counter += 1
 except Exception as e:
+    print(e)
     st.error("An error occurred. Please try again later.")
 st.write("Developed by Shantanu Thorat, Texas A&M Class of 2024.")

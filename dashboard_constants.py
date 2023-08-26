@@ -14,7 +14,7 @@ AEFIS_QUESTIONS_COLS = {
 
 }
 
-KAGGLE_DATASET_NAME = "texas-a-and-m-university-grades-and-aefis-dataset"
+KAGGLE_DATASET_NAME = "sst001/texas-a-and-m-university-grades-and-aefis-dataset"
 AEFIS_QUESTIONS = [key + "(Multi-Choice, Single Answer)" for key in AEFIS_QUESTIONS_COLS.keys()]
 SUBJECT_CODE = "subject_code"
 COURSE_NUMBER = "course_number"
@@ -204,4 +204,4 @@ def query_frame(params, dataframe):
 def download_kaggle_data():
     api = KaggleApi()
     api.authenticate()
-    api.dataset_download_files(f'sst001/{KAGGLE_DATASET_NAME}',unzip=True)
+    api.dataset_download_files(KAGGLE_DATASET_NAME, unzip=True)
